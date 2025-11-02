@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ДРОЧИЛЬНЯ - ШТУРВАЛ УДОВОЛЬСТВИЯ | Официальный сайт</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Comic Neue', cursive;
+            font-family: Arial, sans-serif;
         }
         
         :root {
@@ -30,6 +28,7 @@
             overflow-x: hidden;
             color: white;
             line-height: 1.6;
+            font-size: 16px;
         }
         
         .container {
@@ -426,6 +425,17 @@
             animation: float 15s linear infinite;
         }
         
+        .huiki {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            font-size: 2rem;
+            font-weight: bold;
+            opacity: 0.8;
+            animation: float-huiki 20s linear infinite;
+            text-shadow: 0 0 10px #ff00cc;
+        }
+        
         @keyframes float {
             0% {
                 transform: translate(0, 0) rotate(0deg);
@@ -439,6 +449,23 @@
             }
             100% {
                 transform: translate(100vw, -100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes float-huiki {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-100vw, 100vh) rotate(-360deg);
                 opacity: 0;
             }
         }
@@ -906,10 +933,11 @@
         }
         
         // Создаем летающие элементы
-        const texts = ['УХ ТЫ!', 'ВАУ!', 'ОГО!', 'АХ!', 'WOW!', 'БЛЯ!', 'ЕБАТЬ!', 'НАХУЙ!'];
-        const emojis = ['🤪', '😜', '🥴', '🤯', '💥', '🔥', '🎉', '💫', '👅', '🍆', '💦'];
+        const texts = ['УХ ТЫ!', 'ВАУ!', 'ОГО!', 'АХ!', 'WOW!', 'БЛЯ!', 'ЕБАТЬ!', 'НАХУЙ!', 'ПИЗДЕЦ!', 'ОХУЕТЬ!'];
+        const emojis = ['🤪', '😜', '🥴', '🤯', '💥', '🔥', '🎉', '💫', '👅', '🍆', '💦', '🖕', '🍑'];
+        const huiki = ['8====D', '8===D', '8==D', '8=D', '8========D', '8=========D', 'ХУЙ', 'ПИЗДА', 'МАНДА', 'ВАГИНА'];
         
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 20; i++) {
             const floating = document.createElement('div');
             floating.className = 'floating';
             
@@ -927,6 +955,18 @@
             floating.style.animationDelay = `${Math.random() * 15}s`;
             floating.style.animationDuration = `${Math.random() * 10 + 10}s`;
             document.body.appendChild(floating);
+        }
+        
+        for (let i = 0; i < 15; i++) {
+            const hui = document.createElement('div');
+            hui.className = 'huiki';
+            hui.textContent = huiki[Math.floor(Math.random() * huiki.length)];
+            hui.style.left = `${Math.random() * 100}%`;
+            hui.style.top = `${Math.random() * 100}%`;
+            hui.style.animationDelay = `${Math.random() * 20}s`;
+            hui.style.animationDuration = `${Math.random() * 15 + 15}s`;
+            hui.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            document.body.appendChild(hui);
         }
     </script>
 </body>
